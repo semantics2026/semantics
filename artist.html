@@ -360,12 +360,10 @@ Use these XML tags ONLY, nothing else:
 <artistVoiceNote>two sentences on how you preserved Armstrong's voice</artistVoiceNote>`;
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const res = await fetch("/api/translate", {
       method: "POST",
-      headers: { "content-type": "application/json", "anthropic-dangerous-direct-browser-calls": "true" },
+      headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 2000,
         messages: [{ role: "user", content: prompt }]
       })
     });
